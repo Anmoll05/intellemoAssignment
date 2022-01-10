@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import * as React from "react";
+import "./App.css";
+import { BrowserRouter, Link, Router, Routes, Route } from "react-router-dom"
+import Profile from "./Profile";
+import Home from "./Home";
+import NewUser from "./NewUser";
+import { Button } from "react-bootstrap"
+export default function App() {
 
-function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+
+
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route path="/profile/:id" element={<Profile />} />
+        <Route path="/user" element={<NewUser />}>
+
+        </Route>
+
+      </Routes>
+      <div style={{display:"flex",justifyContent:"center",marginTop:"10px"}}>
+        
+      <Link to="/user"> <Button variant="secondary" >Add User Page</Button></Link>
+      </div>
+     
+      
+    </BrowserRouter>
   );
 }
-
-export default App;
